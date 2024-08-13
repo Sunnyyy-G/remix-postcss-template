@@ -1,0 +1,130 @@
+/*
+  设置背景色透明度
+  $color：十六进制 #888888
+  $alpha：透明度，0~1
+*/
+
+@define-mixin opacity-bgc $alpha,
+$color {
+    background-color: rgba(red($color), green($color), blue($color), $alpha);
+}
+
+
+/*
+  创建一个实心三角形
+  根据不同方向创建
+*/
+
+%create-triangle {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+}
+
+@define-mixin create-triangle-top $long: 10px,
+$short-l: 0,
+$short-r: 0,
+$color: #ECECEC {
+    border-bottom: $long solid $color;
+    border-left: $short-l solid transparent;
+    border-right: $short-r solid transparent;
+}
+
+@define-mixin create-triangle-bottom $long: 10px,
+$short-l: 0,
+$short-r: 0,
+$color: #ECECEC {
+    border-top: $long solid $color;
+    border-left: $short-r solid transparent;
+    border-right: $short-l solid transparent;
+}
+
+@define-mixin create-triangle-left $long: 10px,
+$short-l: 0,
+$short-r: 0,
+$color: #ECECEC {
+    border-right: $long solid $color;
+    border-top: $short-r solid transparent;
+    border-bottom: $short-l solid transparent;
+}
+
+@define-mixin create-triangle-right $long: 10px,
+$short-l: 0,
+$short-r: 0,
+$color: #ECECEC {
+    border-left: $long solid $color;
+    border-top: $short-l solid transparent;
+    border-bottom: $short-r solid transparent;
+}
+
+
+/*
+  创建一个加号
+*/
+
+@define-mixin create-plus $long,
+$thick,
+$color {
+    display: inline-block;
+    position: relative;
+    width: $long;
+    height: $long;
+    &:before,
+    &:after {
+        position: absolute;
+        content: "";
+        display: inline-block;
+        background-color: $color;
+    }
+    &:before {
+        left: 0;
+        top: calc(($long - $thick) / 2);
+        width: $long;
+        height: $thick;
+    }
+    &:after {
+        left: calc(($long - $thick) / 2);
+        top: 0;
+        width: $thick;
+        height: $long;
+    }
+}
+
+
+/*
+  居中
+*/
+
+%pos-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+/*
+  字体隐藏
+*/
+
+%hide-font {
+    font-size: 0;
+    color: transparent;
+}
+
+@define-mixin hide-col $num: 1,
+$lh:1.5 {
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: calc(1em * $num * $lh);
+}
+
+%hide-1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
