@@ -1,11 +1,14 @@
-/*
-export default {
+/* export default {
     plugins: {
         tailwindcss: {},
         autoprefixer: {},
+        postcssImport: {},
+        postcssMixins: {},
+        postcssNested: {},
+        postcssExtendRule: {}
     },
-};
-*/
+}; */
+
 
 const config = {
     plugins: {

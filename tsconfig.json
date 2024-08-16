@@ -1,6 +1,7 @@
 {
   "include": [
     "remix.env.d.ts",
+    "global.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/.server/**/*.ts",
